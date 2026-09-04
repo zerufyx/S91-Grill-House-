@@ -447,71 +447,69 @@ const CONFIG = {
   address: "Orlando, FL (ubicación del food truck)",
   mapsUrl: "https://maps.google.com/?q=S91+House+Grill+Orlando",
   instagram: "s91housegrill",
-  favorites: ["Churrasco", "Imperial", "S91 Grill House"],
+  favorites: ["S91 Imperial House", "Criolla Grill", "Legendario"],
 };
 
 /* MENÚ — precios y descripciones de ejemplo, cámbialos con los de la dueña */
 const MENU = [
   { id:"perros", name:"Perros Calientes", items:[
-    { name:"Firme", price:null, desc:"Ensalada de repollo con zanahoria, cebolla, papitas, queso, salsas y maíz." },
-    { name:"Legendario", price:null, desc:"Ensalada de repollo con zanahoria, cebolla, papitas, queso, chorizo, tocineta, jamón y maíz." },
+    { name:"Firme", price:4.99, desc:"Repollo, zanahoria, cebolla picada, papitas ralladas, queso amarillo rallado y salsas." },
+    { name:"Americano Power", price:5.99, desc:"Papas ralladas, tocineta y salsa Golden House." },
+    { name:"Legendario", price:8.99, desc:"Repollo, zanahoria rallada, cebolla picada, papitas ralladas, queso amarillo, chorizo, tocineta y maíz.", tag:"Favorito" },
   ]},
   { id:"hamburguesas", name:"Hamburguesas", items:[
-    { name:"Icónica", price:null, desc:"Carne, pollo o chuleta. Lechuga, tomate, papas, queso, huevo y cebolla.", incl:"Incluye ración de papas fritas." },
-    { name:"Valiosa", price:null, desc:"Lechuga, tomate, papas, queso, huevo, jamón y chorizo.", incl:"Incluye ración de papas fritas." },
-    { name:"Imperial", price:null, desc:"Mixta: pollo, carne y chuleta. Lechuga, tomate, huevo, papas, tocineta, chorizo y queso de mano.", incl:"Incluye ración de papas fritas.", tag:"Favorito" },
+    { name:"Americana 91", price:4.99, desc:"Lechuga, tomate, papa rallada, queso rallado y salsa Golden House." },
+    { name:"Iconic", price:14.99, desc:"Repollo, tomate, papas ralladas, queso amarillo rallado, huevo, cebolla y salsas.", incl:"Incluye ración de papas fritas." },
+    { name:"Valiosa", price:17.99, desc:"Lechuga, tomate, queso amarillo rallado, papas ralladas, queso, huevo, jamón, chorizo y maíz.", incl:"Incluye ración de papas fritas." },
+    { name:"S91 Imperial House", price:19.99, desc:"Mixta: pollo y picanha. Pico de gallo, queso amarillo rallado, huevo, papas ralladas, tocineta, maíz, aguacate, chorizo y queso de mano.", incl:"Incluye ración de papas fritas.", tag:"Favorito" },
   ]},
   { id:"pepitos", name:"Pepitos", items:[
-    { name:"Pepito clásico", price:null, desc:"Carne, pollo y chorizo. Lechuga, tomate, cebolla, maíz y papas." },
-    { name:"Pepito especial", price:null, desc:"Carne, pollo y chorizo. Lechuga, tomate, maíz, chorizo, jamón, cebolla, papitas y aguacate.", incl:"Incluye ración de papas fritas." },
+    { name:"El 91", price:16.99, desc:"Carne o pollo. Lechuga, pico de gallo, cebolla picada, queso rallado, maíz, aguacate y papas ralladas.", incl:"Incluye ración de papas fritas." },
+    { name:"El Selecto Grill", price:19.99, desc:"Carne, pollo y chorizo. Lechuga, pico de gallo, maíz, jamón, cebolla, tocineta, papitas ralladas, aguacate y queso frito.", incl:"Incluye ración de papas fritas." },
   ]},
   { id:"cachapas", name:"Cachapas", items:[
-    { name:"Cachapa clásica", price:null, desc:"Queso de mano, queso rallado y nata." },
-    { name:"Cachapa con picanha", price:null, desc:"Queso de mano, queso rallado, nata y picanha." },
+    { name:"S91 Corn Queen", price:13.99, desc:"Cachapa con queso de mano, queso rallado y nata." },
+    { name:"Criolla Grill", price:21.99, desc:"Cachapa con queso de mano, queso rallado, nata, pico de gallo y ½ lb de picanha a la parrilla.", tag:"Favorito" },
   ]},
-  { id:"churrasco", name:"Churrasco", note:"Elige 2 acompañantes.", items:[
-    { name:"Churrasco", price:null, desc:"Acompañantes: maduro, yuca frita, yuca, arroz, papas fritas, arepitas fritas con nata, tostones o aguacate.", incl:"Incluye 2 acompañantes.", tag:"Favorito" },
+  { id:"churrasco", name:"Churrasco", items:[
+    { name:"Gucci Grill House", price:15.99, desc:"Acompañantes a elegir: maduro, yuca frita, yuca, queso frito, papas fritas, pico de gallo, arepitas fritas con nata, tostones o aguacate.", incl:"Incluye 2 acompañantes." },
   ]},
   { id:"patacones", name:"Patacones", items:[
-    { name:"Reina en Proceso", price:null, desc:"Carne desmechada y pollo desmechado con ensalada de repollo y zanahoria." },
-    { name:"La Inalcanzable 91", price:null, desc:"Mixto, ensalada de zanahoria, maíz, jamón, queso de mano, tomate, lechuga y aguacate." },
+    { name:"Reina en Proceso", price:14.99, desc:"Carne desmechada o pollo desmechado. Repollo, zanahoria, queso amarillo, aguacate, huevo y salsas." },
+    { name:"La Inalcanzable 91", price:18.99, desc:"Mixto. Ensalada de zanahoria, maíz, jamón, queso de mano, tomate, lechuga y aguacate." },
   ]},
   { id:"parrilla", name:"Parrilla", items:[
-    { name:"S91 Grill House", price:null, desc:"Queso cremoso, chorizo, guacamole, chicharrón, tequeños, yuca frita, pollo, costilla frita, carne, pico de gallo y arepitas fritas.", tag:"Para compartir" },
+    { name:"Provenza 291 House", price:26.99, desc:"Queso frito, queso de mano, chorizo, chicharrón, yuca frita, arepitas fritas, ⅔ lb de pollo, ⅔ lb de picanha, costilla frita, nata y pico de gallo.", tag:"Para compartir" },
   ]},
-  { id:"empanadas", name:"Empanadas", items:[
-    { name:"Carne molida", price:null, desc:"" },
-    { name:"Pollo", price:null, desc:"" },
-    { name:"Jamón con queso y maíz", price:null, desc:"" },
-    { name:"Carne desmechada", price:null, desc:"" },
-    { name:"Cazón", price:null, desc:"" },
-    { name:"Pabellón", price:null, desc:"" },
+  { id:"empanadas", name:"S91 The House Empanadas", items:[
+    { name:"Pollo desmechado", price:4.99, desc:"" },
+    { name:"Jamón, maíz, queso y tocineta", price:4.99, desc:"" },
+    { name:"Carne desmechada", price:4.99, desc:"" },
+    { name:"Cazón", price:4.99, desc:"" },
+    { name:"Pabellón", price:4.99, desc:"" },
   ]},
   { id:"salchipapas", name:"Salchipapas", items:[
-    { name:"Esencial 91", price:null, desc:"Papas fritas, queso y salchicha." },
-    { name:"91 Dorada", price:null, desc:"Papas fritas, queso, salchicha, maíz, tocineta y huevo." },
-  ]},
-  { id:"pinchos", name:"Pinchos", note:"Con papas fritas, hallaquitas de chicharrón y ensalada de repollo con zanahoria.", items:[
-    { name:"Pincho de carne", price:null, desc:"" },
-    { name:"Pincho de pollo", price:null, desc:"" },
-    { name:"Pincho mixto", price:null, desc:"" },
+    { name:"Esencial", price:5.99, desc:"Papas fritas, salchichas, queso rallado y salsas." },
+    { name:"S91 Dorada House Grill", price:18.99, desc:"Papas fritas, salchichas, queso, maíz, tocineta, jamón, huevo, pollo y carne. Salsa Golden House." },
   ]},
   { id:"appetizers", name:"Appetizers", items:[
-    { name:"Arepitas con nata", price:null, desc:"" },
-    { name:"Tostones", price:null, desc:"Con ensalada de repollo, cilantro y zanahoria." },
-    { name:"Hallaquitas de chicharrón", price:null, desc:"" },
-    { name:"Servicio de tequeños", price:null, desc:"6 unidades con salsa a elección." },
-    { name:"Yuca frita", price:null, desc:"" },
-    { name:"Papas fritas", price:null, desc:"" },
-    { name:"Tocineta y queso", price:null, desc:"" },
+    { name:"Arepitas con nata", price:8.99, desc:"6 piezas." },
+    { name:"Tostones", price:8.99, desc:"4 piezas. Con ensalada de repollo, cilantro y zanahoria." },
+    { name:"Tequeños con salsa", price:11.99, desc:"6 piezas." },
+    { name:"Yuca frita con ensalada", price:8.99, desc:"" },
+    { name:"Chicharrón frito", price:6.99, desc:"" },
+    { name:"Papas fritas", price:6.99, desc:"Con queso rallado, tocineta y maíz." },
   ]},
-  { id:"postres", name:"Postres", items:[
-    { name:"Torta 3 leches", price:null, desc:"" },
-    { name:"Flan S91", price:null, desc:"Flan clásico con caramelo dorado." },
-    { name:"Torta de chocolate", price:null, desc:"" },
+  { id:"postres", name:"Mi Capricho S91", items:[
+    { name:"Torta 3 leches", price:6.99, desc:"" },
+    { name:"Brilla Flan S91", price:6.99, desc:"Flan clásico con caramelo dorado." },
+    { name:"Torta fría", price:6.99, desc:"" },
+  ]},
+  { id:"extras", name:"Extras", note:"Cada extra $2.99", items:[
+    { name:"Extra", price:2.99, desc:"Agrega tocineta, queso, huevo, maíz, aguacate u otro ingrediente a tu plato." },
   ]},
   { id:"ninos", name:"Menú para Niños", items:[
-    { name:"Mini S91 Box", price:null, desc:"Papas fritas, frutas (fresa, manzana, pera, piña) y nuggets de pollo." },
+    { name:"Mini S91 Box", price:6.99, desc:"Papas fritas y nuggets de pollo." },
   ]},
 ];
 
