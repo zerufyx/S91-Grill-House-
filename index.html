@@ -136,6 +136,28 @@ svg{display:block}
   font-size:.82rem;font-weight:500;color:var(--crema-2);
   padding:7px 14px;border:1px solid rgba(246,238,212,.22);border-radius:999px;
 }
+/* aviso del día que edita la dueña desde el panel */
+.aviso-dia{
+  margin:0 0 4px;padding:13px 20px;
+  background:var(--brasa);color:var(--crema);
+  font-size:.92rem;font-weight:600;line-height:1.4;text-align:center;
+}
+.aviso-dia b{font-family:var(--display);font-weight:900;display:block;font-size:1.05rem;margin-bottom:2px}
+.hero-dir{
+  display:inline-flex;align-items:center;gap:7px;
+  margin:12px auto 0;padding:8px 15px;
+  border-radius:999px;
+  background:rgba(246,238,212,.07);
+  border:1px solid rgba(246,238,212,.16);
+  color:rgba(246,238,212,.9);
+  font-size:.84rem;font-weight:600;line-height:1.3;
+  text-align:left;max-width:min(92vw,320px);
+  text-decoration:none;
+  transition:background .2s ease,border-color .2s ease;
+}
+.hero-dir:hover{background:rgba(246,238,212,.12);border-color:rgba(246,238,212,.3)}
+.hero-dir:active{transform:scale(.98)}
+.hero-dir svg{width:16px;height:16px;flex:0 0 auto;color:var(--brasa);stroke:currentColor;align-self:flex-start;margin-top:2px}
 .status i{
   width:8px;height:8px;border-radius:50%;background:var(--crema);
   box-shadow:0 0 0 0 rgba(248,241,213,.5);
@@ -438,6 +460,10 @@ svg{display:block}
     </div>
     <div class="hero-copy">
       <span class="status"><i></i><span id="statusText">Abierto hoy · 11:00 am – 9:00 pm</span></span>
+      <a class="hero-dir" id="heroDir" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <span id="heroDirTxt"></span>
+      </a>
       <div class="hero-actions">
         <a class="btn btn-fire" id="waHero" href="#" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.3.8 3.1.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.2c0-.2-.2-.2-.5-.3z"/></svg>
@@ -461,6 +487,8 @@ svg{display:block}
   </nav>
 
   <!-- ============ MENÚ ============ -->
+  <div class="aviso-dia" id="avisoDia" hidden></div>
+
   <main class="menu" id="menu">
     <section class="favs" aria-label="Favoritos de la casa">
       <h2>Favoritos de la casa</h2>
@@ -523,7 +551,11 @@ svg{display:block}
 const CONFIG = {
   whatsapp: "",                 // ej. "14075551234" (código de país + número, sin + ni espacios)
   address: "704 S. Dillard St., Winter Garden, FL 34787",
-  mapsUrl: "https://maps.google.com/?q=704+S+Dillard+St+Winter+Garden+FL+34787",
+  /* Enlace de ruta. Va con la dirección, NO con el nombre del negocio:
+     mientras S91 no esté registrado en Google Maps, buscar por nombre no
+     devuelve nada. Así abre la ruta directa desde donde esté la persona. */
+  mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=" +
+           encodeURIComponent("704 S Dillard St, Winter Garden, FL 34787"),
   instagram: "s91housegrill",
   favorites: ["S91 Imperial House", "Criolla Grill", "Legendario"],
 
@@ -689,6 +721,8 @@ $("#footAddr").textContent = CONFIG.address;
 $("#footIg").textContent = "@" + CONFIG.instagram;
 $("#footIg").href = "https://instagram.com/" + CONFIG.instagram;
 $("#mapsHero").href = CONFIG.mapsUrl;
+$("#heroDir").href = CONFIG.mapsUrl;
+$("#heroDirTxt").textContent = CONFIG.address;
 $("#year").textContent = new Date().getFullYear();
 ["#waHero","#waFoot"].forEach(id => {
   const a = $(id); a.href = waLink("Hola S91 House Grill, quiero hacer un pedido.");
@@ -710,10 +744,14 @@ $("#year").textContent = new Date().getFullYear();
 })();
 
 /* ---- Favoritos ---- */
-(() => {
-  const all = MENU.flatMap(c => c.items.map(it => ({...it, cat:c.id})));
+function construirFavoritos(menu, nombres){
+  const all = menu.flatMap(c => c.items.map(it => ({...it, cat:c.id})));
   const track = $("#favs");
-  CONFIG.favorites.forEach(name => {
+  track.innerHTML = "";
+  const lista = nombres && nombres.length ? nombres
+              : all.filter(i => i.destacado).map(i => i.name);
+  $(".favs").hidden = lista.length === 0;
+  lista.forEach(name => {
     const it = all.find(i => i.name === name); if(!it) return;
     const b = document.createElement("button");
     b.className = "fav"; b.type = "button";
@@ -728,11 +766,16 @@ $("#year").textContent = new Date().getFullYear();
     });
     track.appendChild(b);
   });
-})();
+}
 
 /* ---- Secciones + tabs ---- */
 const tabs = $("#tabs"), ind = $("#tabInd"), sectionsBox = $("#sections");
-MENU.forEach(cat => {
+let secEls = [];
+
+function construirMenu(menu){
+  tabs.querySelectorAll(".tab").forEach(t => t.remove());
+  sectionsBox.innerHTML = "";
+  menu.forEach(cat => {
   const t = document.createElement("button");
   t.className = "tab"; t.type = "button"; t.textContent = cat.name; t.dataset.target = cat.id;
   t.addEventListener("click", () => { irA(cat.id); });
@@ -793,7 +836,13 @@ MENU.forEach(cat => {
     sec.appendChild(row);
   });
   sectionsBox.appendChild(sec);
-});
+  });
+
+  /* los observadores se rehacen en cada reconstrucción */
+  secEls = [...document.querySelectorAll(".section")];
+  secEls.forEach(x => { spy.observe(x); reveal.observe(x); });
+  moveInd(tabs.querySelector(".tab"), true);
+}
 
 /* indicador de tab
    La barra se auto-centra en la categoría activa, pero eso peleaba con el
@@ -815,17 +864,13 @@ function moveInd(tab, forzarCentro){
   if(r.left < tr.left + 14 || r.right > tr.right - 14)
     tab.scrollIntoView({inline:"center", block:"nearest", behavior:"smooth"});
 }
-moveInd(tabs.querySelector(".tab"), true);
-
 /* scroll-spy: se calla mientras dura un salto pedido por el usuario */
-const secEls = [...document.querySelectorAll(".section")];
 const spy = new IntersectionObserver(entries => {
   if(Date.now() < saltando) return;
   entries.forEach(e => {
     if(e.isIntersecting) moveInd(tabs.querySelector(`.tab[data-target="${e.target.id}"]`));
   });
 }, { rootMargin: "-56px 0px -60% 0px", threshold: 0 });
-secEls.forEach(s => spy.observe(s));
 
 /* ---- Saltar a una categoría ---- */
 function irA(id){
@@ -839,7 +884,6 @@ function irA(id){
 const reveal = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add("in"); reveal.unobserve(e.target); } });
 }, { rootMargin: "0px 0px -12% 0px", threshold: 0.05 });
-secEls.forEach(s => reveal.observe(s));
 
 /* compartir */
 $("#shareBtn").addEventListener("click", async () => {
@@ -864,6 +908,120 @@ lb.addEventListener("click", e => { if(e.target === lb || e.target.closest("#lig
 document.addEventListener("keydown", e => {
   if(e.key === "Escape" && lb.classList.contains("show")) cerrarFoto();
 });
+
+
+/* =====================================================================
+   MENÚ EN VIVO
+   El menú se pinta al instante con la copia local, y en segundo plano
+   busca la versión de Supabase que edita la dueña. Si Supabase falla o
+   el teléfono está sin señal, el menú se ve igual con lo último guardado.
+   ===================================================================== */
+/* ═══════════════════════════════════════════════════════════════
+   ⬇⬇⬇  LO ÚNICO QUE TIENES QUE CAMBIAR  ⬇⬇⬇
+   El MISMO Project URL que pusiste en admin.html
+   ═══════════════════════════════════════════════════════════════ */
+const PROJECT_URL = "https://drkcstmcdscklcrefxbs.supabase.co";
+/* ═══════════════════════════════════════════════════════════════
+   ⬆⬆⬆  DE AQUÍ PARA ABAJO NO TOQUES NADA  ⬆⬆⬆
+   ═══════════════════════════════════════════════════════════════ */
+
+const NUBE = {
+  url:     PROJECT_URL,
+  anonKey: "sb_publishable_k4jAuf7UCzpT_kp2jSpW-A_1ICXHA2s",
+  storeId: 4,
+};
+const CACHE = "s91-menu-v1";
+
+function aMenu(cats, platos){
+  const slug = (t, i) => (t || "cat").toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || ("cat" + i);
+  return cats.map((c, i) => ({
+    id: slug(c.nombre, i),
+    name: c.nombre,
+    note: c.nota || "",
+    grid: !!c.con_foto,
+    items: platos
+      .filter(p => p.categoria_id === c.id && p.disponible)
+      .map(p => ({
+        name: p.nombre,
+        price: p.precio == null ? null : Number(p.precio),
+        desc: p.descripcion || "",
+        incl: p.incluye || "",
+        tag:  p.etiqueta || "",
+        img:  p.foto_url || null,
+        destacado: !!p.destacado,
+      })),
+  })).filter(c => c.items.length);
+}
+
+function aplicarAjustes(aj){
+  const caja = $("#avisoDia");
+  if(aj.aviso_activo && aj.aviso){
+    caja.innerHTML = `<b>Aviso de hoy</b>${aj.aviso.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))}`;
+    caja.hidden = false;
+  } else caja.hidden = true;
+
+  if(aj.direccion){
+    CONFIG.address = aj.direccion;
+    $("#footAddr").textContent = aj.direccion;
+    $("#heroDirTxt").textContent = aj.direccion;
+  }
+  if(aj.maps_url){ $("#mapsHero").href = aj.maps_url; $("#heroDir").href = aj.maps_url; }
+  if(aj.whatsapp)  CONFIG.whatsapp = aj.whatsapp;
+  if(aj.instagram){
+    CONFIG.instagram = aj.instagram;
+    $("#footIg").textContent = "@" + aj.instagram;
+    $("#footIg").href = "https://instagram.com/" + aj.instagram;
+  }
+  if(aj.horario && Object.keys(aj.horario).length){
+    for(const d in aj.horario) CONFIG.schedule[d] = aj.horario[d];
+    const e = estadoHorario();
+    $("#statusText").textContent = e.txt;
+    $(".status i").style.background = e.abierto ? "#3ec26a" : "#8a7d72";
+    $("#footHours").textContent = resumenHorario();
+  }
+}
+
+function pintarTodo(menu, favoritos){
+  construirMenu(menu);
+  construirFavoritos(menu, favoritos);
+}
+
+/* 1. pintado inmediato: caché si existe, si no el menú de respaldo */
+let inicial = MENU, favsIniciales = CONFIG.favorites;
+try{
+  const guardado = JSON.parse(localStorage.getItem(CACHE) || "null");
+  if(guardado && guardado.menu && guardado.menu.length){
+    inicial = guardado.menu; favsIniciales = null;
+  }
+}catch(e){}
+pintarTodo(inicial, favsIniciales);
+
+/* 2. en segundo plano, la versión que edita la dueña */
+(async () => {
+  if(PROJECT_URL.includes("TU-PROYECTO")) return;   // todavía sin configurar
+  try{
+    const cab = { apikey: NUBE.anonKey, Authorization: "Bearer " + NUBE.anonKey };
+    const base = NUBE.url + "/rest/v1";
+    const [rc, rp, ra] = await Promise.all([
+      fetch(`${base}/categorias?store_id=eq.${NUBE.storeId}&visible=eq.true&order=orden`, {headers:cab}),
+      fetch(`${base}/platos?store_id=eq.${NUBE.storeId}&order=orden`, {headers:cab}),
+      fetch(`${base}/ajustes?store_id=eq.${NUBE.storeId}&limit=1`, {headers:cab}),
+    ]);
+    if(!rc.ok || !rp.ok) return;
+
+    if(ra.ok){
+      const aj = (await ra.json())[0];
+      if(aj) aplicarAjustes(aj);
+    }
+
+    const menu = aMenu(await rc.json(), await rp.json());
+    if(!menu.length) return;
+    localStorage.setItem(CACHE, JSON.stringify({ menu, en: Date.now() }));
+    pintarTodo(menu, null);
+  }catch(e){ /* sin señal: se queda lo que ya está pintado */ }
+})();
 
 /* ---- Intro ---- */
 (() => {
