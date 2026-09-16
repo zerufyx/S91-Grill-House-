@@ -67,17 +67,12 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--brasa);b
 .aviso.bien{background:#e9f5ee;color:#215c3b;border:1px solid #bfe0cd;display:block}
 .aviso.info{background:#fdf3e4;color:#6b4413;border:1px solid #ecd6ad;display:block}
 
-.modo-fila{display:flex;background:rgba(26,21,18,.06);border-radius:999px;padding:3px;margin-bottom:18px}
-.modo-fila button{flex:1;padding:9px 6px;border-radius:999px;font-size:.74rem;font-weight:700;color:var(--ink-soft);white-space:nowrap}
-.modo-fila button.act{background:#fff;color:var(--brasa);box-shadow:0 1px 3px rgba(0,0,0,.12)}
-.demo-nota{font-size:.78rem;color:var(--cobre);background:#fdf3e4;border:1px solid #ecd6ad;border-radius:12px;padding:10px 12px;margin-bottom:16px;line-height:1.4}
 
 .top{position:sticky;top:0;z-index:30;background:var(--carbon);color:var(--crema);padding:calc(env(safe-area-inset-top) + 12px) 16px 12px;display:flex;align-items:center;gap:10px}
 .top-logo{width:34px;height:auto;flex:0 0 auto}
 .top-txt{flex:1;min-width:0}
 .top-txt b{display:block;font-family:var(--display);font-weight:900;font-size:1.02rem}
 .top-txt small{display:block;font-size:.68rem;opacity:.6;font-weight:500}
-.chip-demo{background:rgba(246,238,212,.12);border:1px solid rgba(246,238,212,.22);border-radius:999px;padding:4px 11px;font-size:.68rem;font-weight:700;color:var(--crema);letter-spacing:.5px;flex:0 0 auto}
 .top button.salir{color:var(--crema);font-size:.8rem;font-weight:600;opacity:.8;flex:0 0 auto}
 
 .envoltura{max-width:760px;margin:0 auto;padding:16px 16px 90px}
@@ -172,18 +167,7 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--brasa);b
   <div class="entrada-sub">ADMINISTRAR MENÚ</div>
 
   <div class="tarjeta-login">
-    <div class="modo-fila">
-      <button id="modoDemo" class="act" type="button">Modo demostración</button>
-      <button id="modoReal" type="button">Cuenta real</button>
-    </div>
-
-    <div id="bloqueDemo">
-      <p class="sub" style="margin-bottom:12px">Prueba el panel con el menú actual, sin conectar nada.</p>
-      <div class="demo-nota">Aquí no hace falta correo ni contraseña. Lo que edites se guarda solo en este navegador, para que puedas probar; no toca el menú real.</div>
-      <button class="btn btn-rojo" id="btnEntrarDemo">Entrar al modo demostración</button>
-    </div>
-
-    <div id="bloqueReal" hidden>
+    <div id="bloqueReal">
       <h2>Entrar</h2>
       <p class="sub">Con el correo y la contraseña que te dieron.</p>
       <div class="aviso" id="avisoLogin"></div>
@@ -203,12 +187,10 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--brasa);b
       <path d="M357.0,1471.9C344.7,1471.4 332.9,1470.4 329.5,1469.6C326.2,1468.8 321.0,1467.8 318.0,1467.5C315.0,1467.1 310.2,1466.2 307.5,1465.4C304.8,1464.7 299.8,1463.8 296.5,1463.5C290.3,1462.9 279.0,1459.9 273.2,1457.4C271.4,1456.6 269.1,1456.0 268.0,1456.0C265.6,1456.0 249.6,1450.7 245.5,1448.6C243.8,1447.7 241.7,1447.0 240.8,1447.0C239.8,1447.0 237.1,1446.0 234.8,1444.9C232.4,1443.7 228.7,1442.0 226.5,1441.0C219.3,1437.8 197.5,1426.7 196.1,1425.6C195.4,1425.0 192.4,1423.2 189.5,1421.5C184.3,1418.6 175.0,1412.3 165.9,1405.7C160.2,1401.6 143.1,1386.9 137.0,1380.8C119.9,1364.0 102.0,1340.9 91.0,1321.4C89.1,1318.0 87.0,1314.6 86.4,1313.9C85.7,1313.1 84.0,1309.6 82.5,1306.0C81.0,1302.4 79.3,1298.8 78.6,1298.0C77.4,1296.5 73.7,1287.5 72.5,1283.0C72.1,1281.6 71.2,1279.8 70.5,1279.0C69.1,1277.3 65.0,1264.8 65.0,1262.3C65.0,1261.4 64.1,1258.8 63.1,1256.6C61.2,1252.6 57.7,1237.8 56.5,1229.0C56.1,1226.5 55.2,1222.3 54.4,1219.6C53.7,1216.9 52.3,1205.5 51.5,1194.1C50.1,1175.4 50.1,1171.6 51.5,1153.0C52.4,1141.7 53.7,1130.7 54.5,1128.5C55.3,1126.3 56.2,1122.2 56.5,1119.5C57.4,1112.1 60.8,1097.9 62.4,1095.0C63.1,1093.6 65.0,1088.5 66.5,1083.5C68.0,1078.5 69.7,1073.9 70.3,1073.2C70.9,1072.4 72.7,1068.6 74.3,1064.7C75.9,1060.7 77.7,1056.8 78.5,1056.0C79.2,1055.2 80.8,1052.5 82.2,1050.0C85.8,1043.2 91.9,1034.3 98.1,1026.4C104.2,1018.8 122.3,1001.2 128.0,997.4C129.9,996.1 133.3,993.8 135.5,992.3C137.7,990.7 140.6,988.9 142.0,988.2C144.5,987.0 146.3,986.0 151.0,983.0C152.4,982.1 156.9,980.1 161.0,978.5C165.1,976.9 169.4,975.0 170.5,974.3C171.6,973.7 175.0,972.7 178.0,972.1C181.0,971.6 186.2,970.4 189.5,969.6C207.2,965.0 208.2,964.9 230.5,964.9C246.8,964.9 253.5,965.3 256.5,966.3C258.7,967.1 262.7,968.0 265.5,968.5C268.2,968.9 271.6,969.8 273.0,970.5C274.4,971.2 277.1,972.0 279.2,972.4C283.5,973.2 298.2,980.6 306.5,986.2C316.9,993.3 329.9,1006.4 336.4,1016.4C341.6,1024.3 346.7,1033.5 347.5,1036.1C348.6,1039.9 352.1,1049.2 353.7,1052.6C356.2,1057.9 355.2,1059.4 349.0,1060.1C330.0,1062.2 312.2,1073.7 300.1,1091.6C297.9,1095.0 296.0,1098.2 296.0,1098.7C296.0,1099.2 294.9,1101.1 293.6,1102.8C292.3,1104.6 290.2,1109.3 289.0,1113.3C287.8,1117.3 285.9,1122.3 284.9,1124.6C283.8,1126.8 283.0,1129.7 283.0,1131.1C282.9,1132.4 282.3,1136.2 281.5,1139.5C279.8,1146.6 279.5,1178.3 281.0,1187.2C281.6,1190.4 282.4,1195.5 283.0,1198.6C283.5,1201.7 284.6,1205.2 285.3,1206.4C286.1,1207.6 287.2,1210.5 287.8,1213.0C289.1,1218.5 290.8,1223.7 292.5,1227.0C301.5,1244.0 307.1,1252.5 315.2,1260.8C318.6,1264.3 324.1,1269.4 327.4,1272.1C330.8,1274.8 334.3,1277.6 335.2,1278.5C336.2,1279.3 339.5,1281.3 342.6,1283.0C345.8,1284.7 348.8,1286.4 349.4,1286.9C350.6,1287.9 357.0,1290.4 362.9,1292.2C364.8,1292.7 367.3,1293.8 368.4,1294.5C371.8,1296.7 388.5,1299.8 403.8,1301.1C426.4,1303.0 456.4,1299.5 466.9,1293.9C468.8,1292.9 471.2,1292.0 472.0,1292.0C472.8,1292.0 474.4,1291.3 475.4,1290.5C476.5,1289.7 478.1,1289.0 478.9,1289.0C479.8,1289.0 483.1,1287.2 486.3,1285.0C489.4,1282.8 492.5,1281.0 493.0,1281.0C496.2,1281.0 525.0,1252.1 525.0,1248.9C525.0,1248.4 526.8,1245.4 529.0,1242.3C531.2,1239.1 533.0,1235.7 533.0,1234.7C533.0,1233.8 533.9,1231.3 535.0,1229.3C536.1,1227.2 537.0,1224.7 537.0,1223.7C537.0,1222.7 537.7,1220.9 538.6,1219.5C540.9,1215.9 542.6,1196.7 541.8,1182.0C541.1,1168.0 540.6,1165.7 535.6,1151.5C530.6,1137.2 525.3,1127.4 513.3,1110.0C507.6,1101.7 497.8,1090.7 484.9,1078.0C466.5,1059.8 462.1,1055.9 436.3,1035.4C427.4,1028.3 415.3,1018.9 409.5,1014.5C403.6,1010.1 397.0,1005.1 394.7,1003.3C392.4,1001.5 388.2,998.5 385.5,996.6C382.8,994.6 377.4,990.5 373.5,987.5C369.6,984.4 365.3,981.2 363.9,980.2C362.5,979.3 359.5,977.0 357.4,975.2C352.6,971.1 336.4,958.6 330.3,954.4C327.9,952.6 325.0,950.3 323.9,949.2C322.9,948.1 320.4,945.9 318.3,944.3C298.9,929.9 250.3,884.2 236.1,866.9C233.1,863.4 230.4,860.3 230.1,860.0C229.5,859.6 223.0,851.5 212.4,838.0C207.1,831.2 202.7,825.1 201.0,822.1C200.1,820.7 198.1,817.5 196.5,815.1C194.8,812.6 192.2,808.4 190.6,805.6C189.1,802.8 187.2,799.8 186.5,799.0C185.9,798.2 184.2,795.2 182.9,792.5C181.6,789.8 179.5,786.2 178.3,784.7C177.0,783.1 176.0,781.2 176.0,780.4C176.0,779.6 174.2,775.5 172.1,771.2C169.9,767.0 167.4,761.5 166.5,759.0C165.6,756.5 164.0,752.7 163.0,750.5C160.6,745.5 158.2,738.7 156.9,733.6C156.4,731.5 155.3,728.6 154.5,727.1C153.8,725.6 152.0,719.5 150.6,713.4C149.2,707.4 147.3,700.5 146.5,698.0C145.7,695.5 144.8,691.7 144.5,689.5C144.1,687.3 143.2,682.4 142.5,678.5C141.7,674.6 140.8,667.5 140.5,662.5C140.1,657.5 139.2,649.2 138.4,644.0C136.5,630.7 136.5,593.2 138.5,581.4C139.4,576.5 140.4,568.9 140.9,564.5C141.9,555.5 144.5,543.7 146.5,540.0C147.2,538.6 148.1,535.9 148.5,534.0C149.8,527.2 153.3,516.5 154.6,515.0C155.3,514.2 156.2,512.1 156.6,510.5C157.3,507.3 169.8,480.9 170.9,480.0C171.3,479.7 172.6,477.5 173.9,475.0C176.5,469.9 183.6,459.0 189.3,451.5C191.4,448.8 195.0,444.0 197.2,441.0C200.9,436.1 212.0,423.5 219.6,415.5C224.7,410.2 240.2,396.6 249.5,389.3C258.8,381.9 277.6,369.0 279.0,369.0C279.4,369.0 280.8,368.1 282.2,367.1C285.3,364.6 301.3,356.2 312.0,351.3C314.5,350.1 318.3,348.3 320.5,347.2C322.8,346.1 326.1,344.9 328.0,344.5C329.9,344.1 331.9,343.4 332.5,343.0C334.5,341.4 346.7,337.1 351.0,336.5C353.5,336.1 356.6,335.2 358.0,334.5C359.4,333.8 362.5,332.9 365.0,332.5C367.5,332.1 370.6,331.2 372.0,330.5C373.4,329.8 378.1,328.9 382.5,328.5C386.9,328.2 392.3,327.4 394.5,326.9C400.8,325.3 433.4,323.1 434.5,324.1C435.1,324.7 435.0,325.7 434.3,326.8C433.6,327.7 429.9,334.1 426.0,341.0C422.1,347.9 418.4,354.2 417.9,355.0C417.4,355.8 416.3,357.9 415.4,359.5C414.6,361.1 411.0,367.9 407.4,374.5C403.9,381.1 400.5,387.6 399.9,389.0C399.3,390.4 397.1,395.1 395.0,399.5C393.0,403.9 390.5,409.5 389.5,412.0C388.6,414.5 386.8,418.8 385.5,421.5C381.5,430.2 380.0,434.0 380.0,435.7C380.0,436.6 378.9,439.6 377.6,442.4C374.6,449.0 373.0,453.4 371.9,459.0C371.4,461.5 370.1,465.3 369.1,467.5C367.0,471.9 365.5,477.4 363.9,486.5C363.4,489.8 362.2,493.7 361.4,495.2C360.6,496.7 359.6,499.8 359.1,502.2C358.6,504.6 357.5,509.2 356.6,512.5C355.7,515.7 355.0,519.6 355.0,521.0C355.0,522.4 354.1,526.1 353.0,529.3C351.9,532.4 351.0,536.0 351.0,537.2C351.0,538.5 350.3,541.6 349.6,544.2C348.8,546.7 347.9,552.6 347.5,557.2C347.1,561.7 346.2,567.7 345.4,570.3C343.0,579.0 341.5,611.7 342.8,629.7C343.4,638.5 344.4,647.0 345.1,648.6C345.7,650.2 346.6,654.4 347.1,658.0C348.2,665.2 351.7,676.7 353.5,679.0C354.2,679.8 355.0,681.9 355.4,683.5C355.8,685.1 357.2,688.8 358.6,691.5C369.6,713.8 381.5,728.6 407.5,751.9C428.6,770.9 462.4,797.8 482.0,811.3C485.0,813.4 491.3,817.8 496.0,821.1C500.7,824.4 506.8,828.6 509.5,830.5C515.0,834.2 533.8,846.9 536.2,848.5C537.1,849.0 542.4,852.6 548.1,856.5C553.8,860.3 559.7,864.1 561.1,865.0C562.6,865.8 567.5,869.0 572.1,872.1C576.7,875.2 584.3,880.1 589.0,883.0C598.7,889.1 622.0,904.2 626.5,907.3C628.1,908.5 632.6,911.6 636.5,914.2C643.1,918.7 648.1,922.3 657.7,929.6C683.8,949.1 721.6,988.5 740.2,1015.5C745.9,1023.8 746.7,1025.0 754.3,1038.5C756.8,1042.9 759.8,1048.0 760.9,1049.8C762.1,1051.6 763.3,1054.2 763.6,1055.6C763.9,1056.9 765.1,1059.7 766.1,1061.7C767.1,1063.8 768.0,1065.9 768.0,1066.6C768.0,1067.2 768.7,1068.3 769.5,1069.0C770.3,1069.7 771.2,1071.8 771.6,1073.9C772.0,1075.9 772.9,1078.7 773.6,1080.2C774.4,1081.7 775.0,1083.7 775.0,1084.7C775.0,1085.7 775.8,1088.1 776.9,1090.0C778.7,1093.4 780.9,1102.4 783.5,1116.5C784.2,1120.3 785.2,1124.7 785.8,1126.2C787.3,1129.9 789.0,1154.1 789.0,1171.7C789.0,1187.7 787.3,1210.0 785.8,1213.9C785.3,1215.3 784.2,1219.7 783.5,1223.5C781.0,1236.8 778.9,1245.3 777.5,1248.0C776.7,1249.5 775.6,1252.5 775.1,1254.6C773.8,1260.2 772.1,1264.5 767.9,1273.5C765.9,1277.9 763.9,1282.6 763.5,1284.0C763.1,1285.4 762.2,1287.2 761.5,1288.0C760.8,1288.8 758.8,1292.4 757.0,1295.9C755.2,1299.5 753.0,1303.5 752.0,1304.9C751.0,1306.3 747.6,1311.5 744.4,1316.5C724.2,1347.7 691.9,1379.3 655.5,1403.3C643.0,1411.6 636.5,1415.3 620.5,1423.3C606.4,1430.4 596.0,1435.1 588.5,1438.0C585.2,1439.2 581.1,1440.8 579.5,1441.6C574.7,1443.8 567.8,1446.1 563.4,1447.0C561.2,1447.5 557.8,1448.5 555.9,1449.4C550.6,1451.7 539.9,1454.8 535.0,1455.5C532.5,1455.8 528.9,1456.7 527.0,1457.5C521.2,1459.7 510.1,1462.1 499.2,1463.6C493.6,1464.3 488.6,1465.1 488.2,1465.4C487.8,1465.7 483.4,1466.4 478.4,1467.0C473.5,1467.6 466.4,1468.8 462.5,1469.5C458.4,1470.4 443.2,1471.4 425.2,1472.0C392.2,1473.1 388.6,1473.1 357.0,1471.9ZM826.5,1456.0C811.2,1455.5 809.5,1455.3 809.2,1453.7C809.0,1452.7 809.4,1451.2 810.1,1450.4C812.2,1447.8 817.0,1435.1 817.0,1432.1C817.0,1430.5 817.6,1427.5 818.4,1425.4C819.1,1423.2 820.0,1419.2 820.4,1416.5C820.8,1413.8 821.7,1409.2 822.5,1406.5C824.0,1401.3 826.4,1379.5 828.0,1358.0C828.5,1351.1 829.4,1339.4 830.0,1332.0C830.5,1324.6 831.2,1258.9 831.5,1186.0L832.1,1053.5L829.7,1044.0C828.3,1038.8 826.4,1032.7 825.5,1030.5C822.8,1024.2 815.8,1016.7 810.1,1014.1C807.3,1012.7 805.0,1011.1 805.0,1010.4C805.0,1009.7 808.9,1007.9 813.8,1006.4C818.6,1004.9 823.6,1003.1 825.0,1002.5C828.8,1000.6 838.1,997.2 841.5,996.4C843.1,996.0 845.0,995.4 845.5,995.0C847.0,993.8 859.5,989.0 860.9,989.0C861.6,989.0 863.9,988.1 865.9,987.1C870.2,984.8 881.5,980.0 882.4,980.0C883.1,980.0 898.2,973.0 904.0,970.0C915.5,964.1 923.8,959.5 925.9,957.9C927.2,956.8 928.7,956.0 929.3,956.0C929.8,956.0 932.1,954.5 934.4,952.7C936.7,950.9 940.5,948.1 942.9,946.5C945.3,944.9 947.4,943.0 947.7,942.3C948.4,940.6 951.0,940.6 951.0,942.2C951.3,984.5 950.7,1179.6 950.0,1247.0C949.1,1336.1 949.4,1351.6 952.0,1377.0C952.5,1381.7 953.3,1388.0 953.9,1391.0C954.5,1394.0 955.6,1402.1 956.4,1409.0C958.4,1426.0 959.7,1431.3 966.0,1447.8C968.2,1453.5 968.5,1455.2 967.5,1455.6C965.7,1456.3 847.8,1456.6 826.5,1456.0ZM778.5,959.0C775.2,958.6 771.4,957.8 770.0,957.2C768.6,956.7 764.6,955.9 761.0,955.5C757.5,955.1 752.8,954.1 750.6,953.4C748.5,952.6 745.6,952.0 744.1,952.0C742.6,952.0 739.6,951.1 737.5,950.0C735.3,948.9 732.1,947.5 730.5,947.0C723.9,945.0 718.4,942.8 717.0,941.5C716.2,940.7 714.2,939.6 712.6,939.0C706.9,936.9 693.3,927.0 685.5,919.3C676.4,910.3 670.1,901.7 666.4,892.8C665.0,889.4 663.2,885.7 662.3,884.4C660.7,881.8 659.3,874.4 658.4,862.5C657.7,854.2 660.1,835.8 662.2,833.3C662.8,832.6 664.5,829.3 666.1,825.9C676.1,804.8 699.3,789.4 728.0,784.9C734.9,783.8 758.7,783.4 759.6,784.3C760.0,784.7 759.4,790.6 758.2,797.4C754.1,820.5 755.5,855.8 761.0,870.5C762.1,873.2 763.4,877.3 763.9,879.5C765.3,885.4 768.0,892.3 769.5,894.0C770.2,894.8 771.5,897.1 772.3,899.0C774.2,903.4 782.8,914.2 788.0,918.5C793.7,923.3 802.2,926.4 809.5,926.4C821.6,926.3 829.3,922.6 841.0,911.1C850.2,902.0 854.7,896.3 858.4,889.0C860.0,886.0 862.1,882.4 863.1,881.1C864.2,879.8 865.0,878.2 865.0,877.5C865.0,876.8 865.7,875.7 866.5,875.0C867.3,874.3 868.0,872.7 868.0,871.5C868.0,870.3 868.9,868.1 870.1,866.7C871.2,865.2 873.2,860.8 874.6,856.8C876.0,852.8 877.9,847.7 878.9,845.5C881.2,840.6 882.8,836.0 884.5,829.5C885.3,826.8 887.2,820.8 888.8,816.3C890.5,811.9 892.1,806.2 892.5,803.8C892.9,801.5 894.0,796.8 895.0,793.5C898.5,782.0 900.0,775.4 901.1,767.2C901.6,762.6 902.5,757.8 903.0,756.6C903.4,755.4 904.1,751.7 904.5,748.4C904.9,745.2 905.8,740.2 906.6,737.3C907.3,734.4 908.1,727.7 908.5,722.3C908.8,716.9 909.7,707.5 910.6,701.5C912.4,687.3 913.9,655.2 912.8,652.2C911.5,648.5 908.9,649.9 907.0,655.5C905.3,660.5 903.3,664.9 900.2,670.5C897.5,675.3 886.7,691.4 885.4,692.5C884.8,693.0 882.9,695.3 881.4,697.5C874.6,707.0 857.4,723.1 845.6,730.9C840.5,734.2 832.9,738.8 831.0,739.6C830.2,740.0 828.8,740.8 828.0,741.4C827.2,742.1 823.8,743.6 820.5,744.9C817.2,746.2 813.4,747.9 812.1,748.8C809.4,750.4 798.6,753.5 790.1,755.1C787.2,755.6 783.4,756.8 781.6,757.7C779.0,759.1 775.1,759.4 757.0,759.4C734.5,759.5 732.5,759.2 713.9,753.4C711.3,752.6 708.4,752.0 707.4,752.0C706.4,752.0 703.8,751.1 701.6,750.1C690.8,745.0 686.3,743.0 685.7,743.0C685.4,743.0 681.1,740.3 676.3,737.0C662.4,727.6 649.1,715.1 642.5,705.0C640.8,702.5 639.0,700.0 638.4,699.5C637.7,699.0 635.8,695.6 634.0,692.0C632.2,688.4 629.5,683.2 628.0,680.5C626.4,677.8 624.9,673.8 624.5,671.8C624.1,669.7 623.4,667.8 623.0,667.5C621.8,666.7 617.3,651.5 616.5,645.5C616.2,642.8 615.1,637.8 614.2,634.5C611.8,625.8 611.8,577.1 614.2,569.0C615.2,566.0 616.2,560.8 616.5,557.5C617.1,551.6 619.5,543.0 623.2,533.8C624.2,531.2 625.0,528.6 625.0,528.0C625.0,526.6 627.8,520.4 633.6,508.5C651.5,472.3 678.2,444.4 712.5,426.0C715.8,424.3 719.0,422.5 719.5,422.0C720.0,421.6 721.6,420.9 723.0,420.5C724.4,420.2 728.6,418.4 732.5,416.5C738.9,413.5 745.5,411.5 756.7,409.0C759.1,408.5 762.3,407.4 764.0,406.5C765.7,405.6 771.7,404.5 777.3,404.0C782.9,403.5 790.2,402.6 793.5,402.0C803.8,400.3 834.2,400.8 852.2,403.0C861.2,404.1 869.6,405.5 871.0,406.1C874.2,407.5 889.7,412.0 891.2,412.0C891.8,412.0 894.3,412.9 896.7,414.0C899.1,415.1 903.1,416.9 905.8,418.1C938.7,432.5 961.4,449.9 984.7,478.6C990.8,486.1 996.8,494.5 1000.0,500.2C1005.0,509.3 1014.8,529.1 1015.4,531.6C1016.1,534.5 1018.8,541.1 1021.5,546.3C1022.3,547.9 1023.0,550.1 1023.0,551.3C1023.0,552.5 1023.9,556.6 1025.1,560.5C1026.3,564.4 1028.0,570.2 1029.0,573.5C1030.0,576.8 1031.1,582.2 1031.5,585.5C1031.8,588.8 1032.7,594.9 1033.5,599.0C1035.0,606.9 1036.3,618.5 1038.2,641.5C1039.1,652.4 1039.1,658.4 1038.1,668.5C1034.0,710.6 1031.7,727.8 1028.9,737.1C1027.9,740.7 1027.0,744.6 1027.0,745.7C1027.0,746.8 1026.4,749.3 1025.6,751.1C1024.8,753.0 1023.9,756.8 1023.5,759.5C1023.1,762.2 1022.2,765.9 1021.5,767.5C1020.0,771.0 1017.4,778.6 1015.5,785.0C1014.1,789.8 1012.0,795.1 1008.9,801.6C1007.9,803.8 1007.0,806.1 1007.0,806.7C1007.0,808.5 990.8,840.1 986.8,846.1C984.7,849.2 983.0,852.0 983.0,852.3C983.0,852.6 981.5,855.0 979.8,857.5C978.0,860.1 976.0,863.0 975.4,864.1C974.2,866.3 967.7,874.5 960.0,883.8C953.0,892.2 936.5,908.3 928.3,914.7C918.4,922.3 912.7,926.4 910.8,927.2C909.9,927.6 906.9,929.5 904.1,931.4C901.3,933.4 898.8,935.0 898.4,935.0C897.4,935.0 886.5,940.3 885.0,941.5C884.2,942.2 881.9,943.3 880.0,943.8C873.7,945.7 867.5,948.0 864.9,949.5C862.4,950.9 854.2,952.9 840.0,955.5C835.9,956.2 831.3,957.3 829.7,957.9C826.3,959.2 786.7,960.1 778.5,959.0ZM822.7,699.1C825.9,698.0 829.9,696.9 831.7,696.5C835.2,695.8 841.4,692.8 843.9,690.7C844.8,689.9 846.6,688.9 847.9,688.5C850.1,687.8 856.9,683.6 858.0,682.2C858.3,681.8 860.1,680.3 862.0,678.8C869.2,673.4 878.5,663.6 884.0,655.4C889.6,647.2 893.0,641.9 893.0,641.2C893.0,640.8 894.5,637.5 896.3,634.0C899.4,628.1 900.9,623.5 906.5,604.5C908.7,596.9 909.7,571.4 908.1,561.5C906.5,551.7 903.5,537.6 902.6,536.2C902.2,535.5 901.4,532.2 900.9,528.8C900.0,522.8 897.3,514.1 894.5,507.5C893.8,505.9 892.2,501.8 890.9,498.5C888.1,491.0 881.5,478.4 878.4,474.7C877.1,473.1 876.0,471.3 876.0,470.6C876.0,469.9 874.4,467.6 872.4,465.4C870.4,463.3 867.8,460.3 866.5,458.9C865.3,457.4 861.9,454.1 858.9,451.6C855.9,449.0 852.8,446.4 852.0,445.6C850.4,444.3 845.4,441.8 836.0,437.8C831.2,435.8 828.9,435.5 817.5,435.5L804.5,435.5L794.0,440.7C783.1,446.0 780.3,448.0 771.6,456.5C764.0,464.1 759.1,469.7 756.7,473.8C755.5,475.8 753.1,479.7 751.3,482.5C749.5,485.2 748.0,488.2 748.0,489.1C748.0,490.0 747.2,491.8 746.2,493.1C744.4,495.5 741.6,502.3 738.6,511.5C734.0,525.2 732.8,530.1 731.9,536.5C731.4,540.4 730.2,547.5 729.2,552.5C726.9,564.6 726.9,603.9 729.3,615.1C730.1,619.2 731.1,625.4 731.5,628.9C731.9,632.5 732.8,636.6 733.6,638.1C734.4,639.7 735.0,641.7 735.0,642.7C735.0,643.7 735.9,646.2 737.0,648.3C738.1,650.3 739.0,652.6 739.0,653.2C739.0,654.9 744.0,664.4 748.2,670.5C757.1,683.7 769.7,693.6 783.5,698.2C790.4,700.5 793.2,700.9 804.2,700.9C814.3,701.0 818.2,700.6 822.7,699.1Z" fill="#f8f1d5"/>
     </svg>
     <div class="top-txt"><b>S91 House Grill</b><small id="quien"></small></div>
-    <span class="chip-demo" id="chipDemo" hidden>DEMO</span>
     <button class="salir" id="btnSalir">Salir</button>
   </div>
 
   <div class="envoltura">
-    <div class="ayuda" id="ayudaDemo" hidden><b>Estás en modo demostración.</b> Todo lo que hagas aquí queda solo en este navegador — puedes agregar platos, cambiar precios y borrar cosas sin miedo. Nada de esto toca el menú real hasta que conectes la cuenta.</div>
     <div class="ayuda"><b>Cómo funciona.</b> Toca cualquier plato para cambiarle el precio, la descripción o la foto. Si algo se acabó, usa <b>Disponible</b> en vez de borrarlo: desaparece del menú y lo vuelves a encender mañana. Los cambios se ven al instante.</div>
     <div class="aviso" id="avisoPanel"></div>
 
@@ -298,7 +280,7 @@ const $ = (s, r=document) => r.querySelector(s);
 const money = n => n==null ? "—" : "$" + Number(n).toFixed(2);
 const esc = s => (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
-let sb = null, modo = "demo", datos = [], editando = null, siguienteId = -1;
+let sb = null, datos = [], editando = null;
 
 function avisar(el, txt, tipo="mal"){
   el.textContent = txt; el.className = "aviso " + tipo;
@@ -311,40 +293,35 @@ function destello(txt){
   destello._t = setTimeout(() => f.classList.remove("ver"), 2200);
 }
 
-$("#modoDemo").addEventListener("click", () => {
-  $("#modoDemo").classList.add("act"); $("#modoReal").classList.remove("act");
-  $("#bloqueDemo").hidden = false; $("#bloqueReal").hidden = true;
-});
-$("#modoReal").addEventListener("click", () => {
-  $("#modoReal").classList.add("act"); $("#modoDemo").classList.remove("act");
-  $("#bloqueReal").hidden = false; $("#bloqueDemo").hidden = true;
-  if(SIN_CONFIGURAR) avisar($("#avisoLogin"), "Todavía falta conectar la cuenta de Supabase (bloque CONFIG en este archivo).", "info");
-});
-
-const DEMO_KEY = "s91-admin-demo-v1";
-$("#btnEntrarDemo").addEventListener("click", () => {
-  modo = "demo";
-  let guardado = null;
-  try{ guardado = JSON.parse(localStorage.getItem(DEMO_KEY) || "null"); }catch(e){}
-  datos = guardado || JSON.parse(JSON.stringify(MENU_DEMO));
-  entrarAlPanel("Solo en este navegador");
-  $("#chipDemo").hidden = false;
-  $("#ayudaDemo").hidden = false;
-  pintar();
-  cargarAjustes();
-});
+/* Arranque: si ya había sesión abierta, entra directo sin pedir nada. */
+(async () => {
+  if(SIN_CONFIGURAR){
+    avisar($("#avisoLogin"), "Todavía falta conectar la cuenta de Supabase (bloque CONFIG en este archivo).", "info");
+    return;
+  }
+  try{
+    const mod = await import("https://esm.sh/@supabase/supabase-js@2");
+    sb = mod.createClient(CONFIG.url, CONFIG.anonKey);
+    const { data:{ session } } = await sb.auth.getSession();
+    if(session){
+      entrarAlPanel(session.user.email);
+      await cargarDeSupabase();
+      await cargarAjustes();
+    }
+  }catch(e){
+    avisar($("#avisoLogin"), "No hay conexión. Revisa tu internet y recarga la página.");
+  }
+})();
 
 $("#btnEntrar").addEventListener("click", async () => {
   if(SIN_CONFIGURAR) return avisar($("#avisoLogin"), "Todavía falta conectar la cuenta de Supabase.");
   const email = $("#correo").value.trim(), password = $("#clave").value;
   if(!email || !password) return avisar($("#avisoLogin"), "Escribe el correo y la contraseña.");
-  const mod = await import("https://esm.sh/@supabase/supabase-js@2");
-  sb = mod.createClient(CONFIG.url, CONFIG.anonKey);
+  if(!sb) return avisar($("#avisoLogin"), "No hay conexión. Revisa tu internet y recarga la página.");
   $("#btnEntrar").textContent = "Entrando…"; $("#btnEntrar").disabled = true;
   const { data, error } = await sb.auth.signInWithPassword({ email, password });
   $("#btnEntrar").textContent = "Entrar"; $("#btnEntrar").disabled = false;
   if(error) return avisar($("#avisoLogin"), "Correo o contraseña incorrectos.");
-  modo = "real";
   entrarAlPanel(data.session.user.email);
   await cargarDeSupabase();
   await cargarAjustes();
@@ -371,7 +348,6 @@ async function cargarDeSupabase(){
   datos = (cats||[]).map(c => ({...c, platos: (pls||[]).filter(p => p.categoria_id === c.id)}));
   pintar();
 }
-function guardarDemo(){ try{ localStorage.setItem(DEMO_KEY, JSON.stringify(datos)); }catch(e){} }
 
 function pintar(){
   const caja = $("#lista");
@@ -444,7 +420,6 @@ async function moverPlato(id, dir){
   [c.platos[i], c.platos[j]] = [c.platos[j], c.platos[i]];
   c.platos.forEach((p, k) => p.orden = k * 10);
   pintar();
-  if(modo === "demo") return guardarDemo();
   await Promise.all(c.platos.map(p =>
     sb.from("platos").update({ orden: p.orden }).eq("id", p.id)));
 }
@@ -456,7 +431,6 @@ async function moverCategoria(id, dir){
   [datos[i], datos[j]] = [datos[j], datos[i]];
   datos.forEach((c, k) => c.orden = k * 10);
   pintar();
-  if(modo === "demo") return guardarDemo();
   await Promise.all(datos.map(c =>
     sb.from("categorias").update({ orden: c.orden }).eq("id", c.id)));
 }
@@ -477,15 +451,10 @@ async function duplicar(catId){
     foto_url: ultimo.foto_url || null,
     orden: (ultimo.orden ?? c.platos.length * 10) + 5,
   };
-  if(modo === "demo"){
-    c.platos.push({ id: siguienteId--, ...copia });
-    guardarDemo(); pintar();
-  } else {
-    copia.store_id = CONFIG.storeId;
-    const { error } = await sb.from("platos").insert(copia);
-    if(error) return alert("No se pudo duplicar.");
-    await cargarDeSupabase();
-  }
+  copia.store_id = CONFIG.storeId;
+  const { error } = await sb.from("platos").insert(copia);
+  if(error) return alert("No se pudo duplicar.");
+  await cargarDeSupabase();
   destello("Duplicado. Edítalo y cámbiale el nombre.");
 }
 
@@ -578,7 +547,6 @@ function vistaPrevia(e){
 }
 async function subirFoto(){
   if(!fotoLista) return null;
-  if(modo === "demo") return fotoDataUrl;
   const ruta = `${CONFIG.storeId}/${Date.now()}.webp`;
   const { error } = await sb.storage.from(CONFIG.bucket).upload(ruta, fotoLista, { contentType:"image/webp", upsert:true });
   if(error) throw error;
@@ -601,42 +569,25 @@ $("#hojaGuardar").addEventListener("click", async () => {
       };
       const url = await subirFoto();
       if(url) fila.foto_url = url;
-      if(modo === "demo"){
-        const cat = datos.find(c => c.id === fila.categoria_id);
-        if(editando.id){
-          for(const c of datos){
-            const i = c.platos.findIndex(p => p.id === editando.id);
-            if(i > -1){
-              if(c.id === fila.categoria_id) c.platos[i] = {...c.platos[i], ...fila};
-              else { const [pl] = c.platos.splice(i,1); cat.platos.push({...pl, ...fila}); }
-              break;
-            }
-          }
-        } else { cat.platos.push({ id: siguienteId--, ...fila }); }
-        guardarDemo();
-      } else {
-        fila.store_id = CONFIG.storeId;
-        const r = editando.id ? await sb.from("platos").update(fila).eq("id", editando.id) : await sb.from("platos").insert(fila);
-        if(r.error) throw r.error;
-      }
+      fila.store_id = CONFIG.storeId;
+      const r = editando.id
+        ? await sb.from("platos").update(fila).eq("id", editando.id)
+        : await sb.from("platos").insert(fila);
+      if(r.error) throw r.error;
     } else {
       const nombre = $("#cNombre").value.trim();
       if(!nombre) throw new Error("La categoría necesita un nombre.");
       const fila = { nombre, nota: $("#cNota").value.trim() || null, visible: $("#cVis").checked, con_foto: $("#cFoto").checked };
-      if(modo === "demo"){
-        if(editando.id){ Object.assign(datos.find(x => x.id === editando.id), fila); }
-        else { datos.push({ id: siguienteId--, ...fila, platos: [] }); }
-        guardarDemo();
-      } else {
-        fila.store_id = CONFIG.storeId;
-        if(!editando.id) fila.orden = (datos.at(-1)?.orden ?? 0) + 10;
-        const r = editando.id ? await sb.from("categorias").update(fila).eq("id", editando.id) : await sb.from("categorias").insert(fila);
-        if(r.error) throw r.error;
-      }
+      fila.store_id = CONFIG.storeId;
+      if(!editando.id) fila.orden = (datos.at(-1)?.orden ?? 0) + 10;
+      const r = editando.id
+        ? await sb.from("categorias").update(fila).eq("id", editando.id)
+        : await sb.from("categorias").insert(fila);
+      if(r.error) throw r.error;
     }
     fotoLista = null; fotoDataUrl = null;
     cerrarHoja();
-    if(modo === "real") await cargarDeSupabase(); else pintar();
+    await cargarDeSupabase();
     destello("Guardado. Ya se ve en el menú.");
   }catch(err){
     alert(err.message || "No se pudo guardar. Intenta de nuevo.");
@@ -648,16 +599,11 @@ $("#hojaGuardar").addEventListener("click", async () => {
 $("#hojaBorrar").addEventListener("click", async () => {
   const que = editando.tipo === "plato" ? "este plato" : "esta categoría y todos sus platos";
   if(!confirm(`¿Seguro que quieres borrar ${que}? No se puede deshacer.\n\nSi solo se acabó por hoy, mejor usa el interruptor Disponible.`)) return;
-  if(modo === "demo"){
-    if(editando.tipo === "plato"){ for(const c of datos){ c.platos = c.platos.filter(p => p.id !== editando.id); } }
-    else { datos = datos.filter(c => c.id !== editando.id); }
-    guardarDemo(); cerrarHoja(); pintar();
-  } else {
-    const tabla = editando.tipo === "plato" ? "platos" : "categorias";
-    const { error } = await sb.from(tabla).delete().eq("id", editando.id);
-    if(error) return alert("No se pudo borrar.");
-    cerrarHoja(); await cargarDeSupabase();
-  }
+  const tabla = editando.tipo === "plato" ? "platos" : "categorias";
+  const { error } = await sb.from(tabla).delete().eq("id", editando.id);
+  if(error) return alert("No se pudo borrar.");
+  cerrarHoja();
+  await cargarDeSupabase();
   destello("Borrado.");
 });
 
@@ -668,7 +614,6 @@ $("#buscarInput").addEventListener("input", filtrar);
    AJUSTES: aviso del día, horario y datos de contacto
    ===================================================================== */
 const DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
-const AJ_KEY = "s91-admin-ajustes-demo-v1";
 let ajustes = { aviso:"", aviso_activo:false, direccion:"", whatsapp:"", instagram:"", horario:{} };
 
 $("#tabMenu").addEventListener("click", () => {
@@ -718,14 +663,8 @@ function pintarAjustes(){
 }
 
 async function cargarAjustes(){
-  if(modo === "demo"){
-    try{ ajustes = JSON.parse(localStorage.getItem(AJ_KEY)) || ajustes; }catch(e){}
-    if(!ajustes.direccion) ajustes.direccion = "704 S. Dillard St., Winter Garden, FL 34787";
-    if(!ajustes.instagram) ajustes.instagram = "s91housegrill";
-  } else {
-    const { data } = await sb.from("ajustes").select("*").eq("store_id", CONFIG.storeId).maybeSingle();
-    if(data) ajustes = { ...ajustes, ...data, horario: data.horario || {} };
-  }
+  const { data } = await sb.from("ajustes").select("*").eq("store_id", CONFIG.storeId).maybeSingle();
+  if(data) ajustes = { ...ajustes, ...data, horario: data.horario || {} };
   pintarAjustes();
 }
 
@@ -737,9 +676,7 @@ $("#btnGuardarAjustes").addEventListener("click", async () => {
   ajustes.whatsapp     = $("#aWa").value.replace(/\D/g, "");
   ajustes.instagram    = $("#aIg").value.trim().replace(/^@/, "");
   try{
-    if(modo === "demo"){
-      localStorage.setItem(AJ_KEY, JSON.stringify(ajustes));
-    } else {
+    {
       const { error } = await sb.from("ajustes").upsert({
         store_id: CONFIG.storeId,
         aviso: ajustes.aviso || null,
@@ -759,7 +696,6 @@ $("#btnGuardarAjustes").addEventListener("click", async () => {
   }
 });
 
-const MENU_DEMO = [{"id": 1, "nombre": "Perros Calientes", "con_foto": false, "nota": "", "visible": true, "platos": [{"id": 1, "categoria_id": 1, "nombre": "Firme", "precio": 4.99, "descripcion": "Repollo, zanahoria, cebolla picada, papitas ralladas, queso amarillo rallado y salsas.", "incluye": "", "disponible": true, "destacado": false}, {"id": 2, "categoria_id": 1, "nombre": "Americano Power", "precio": 5.99, "descripcion": "Papas ralladas, tocineta y salsa Golden House.", "incluye": "", "disponible": true, "destacado": false}, {"id": 3, "categoria_id": 1, "nombre": "Legendario", "precio": 8.99, "descripcion": "Repollo, zanahoria rallada, cebolla picada, papitas ralladas, queso amarillo, chorizo, tocineta y maíz.", "incluye": "", "disponible": true, "destacado": false}]}, {"id": 2, "nombre": "Hamburguesas", "con_foto": false, "nota": "", "visible": true, "platos": [{"id": 4, "categoria_id": 2, "nombre": "Americana 91", "precio": 4.99, "descripcion": "Lechuga, tomate, papa rallada, queso rallado y salsa Golden House.", "incluye": "", "disponible": true, "destacado": false}, {"id": 5, "categoria_id": 2, "nombre": "Iconic", "precio": 14.99, "descripcion": "Repollo, tomate, papas ralladas, queso amarillo rallado, huevo, cebolla y salsas.", "incluye": "Incluye ración de papas fritas.", "disponible": true, "destacado": false}, {"id": 6, "categoria_id": 2, "nombre": "Valiosa", "precio": 17.99, "descripcion": "Lechuga, tomate, queso amarillo rallado, papas ralladas, queso, huevo, jamón, chorizo y maíz.", "incluye": "Incluye ración de papas fritas.", "disponible": true, "destacado": false}, {"id": 7, "categoria_id": 2, "nombre": "S91 Imperial House", "precio": 19.99, "descripcion": "Mixta: pollo y picanha. Pico de gallo, queso amarillo rallado, huevo, papas ralladas, tocineta, maíz, aguacate, chorizo y queso de mano.", "incluye": "Incluye ración de papas fritas.", "disponible": true, "destacado": false}]}, {"id": 3, "nombre": "Pepitos", "con_foto": false, "nota": "", "visible": true, "platos": [{"id": 8, "categoria_id": 3, "nombre": "El 91", "precio": 16.99, "descripcion": "Carne o pollo. Lechuga, pico de gallo, cebolla picada, queso rallado, maíz, aguacate y papas ralladas.", "incluye": "Incluye ración de papas fritas.", "disponible": true, "destacado": false}, {"id": 9, "categoria_id": 3, "nombre": "El Selecto Grill", "precio": 19.99, "descripcion": "Carne, pollo y chorizo. Lechuga, pico de gallo, maíz, jamón, cebolla, tocineta, papitas ralladas, aguacate y queso frito.", "incluye": "Incluye ración de papas fritas.", "disponible": true, "destacado": false}]}, {"id": 4, "nombre": "Cachapas", "con_foto": false, "nota": "", "visible": true, "platos": [{"id": 10, "categoria_id": 4, "nombre": "S91 Corn Queen", "precio": 13.99, "descripcion": "Cachapa con queso de mano, queso rallado y nata.", "incluye": "", "disponible": true, "destacado": false}, {"id": 11, "categoria_id": 4, "nombre": "Criolla Grill", "precio": 21.99, "descripcion": "Cachapa con queso de mano, queso rallado, nata, pico de gallo y ½ lb de picanha a la parrilla.", "incluye": "", "disponible": true, "destacado": false}]}, {"id": 5, "nombre": "Churrasco", "con_foto": false, "nota": "", "visible": true, "platos": [{"id": 12, "categoria_id": 5, "nombre": "Gucci Grill House", "precio": 18.99, "descripcion": "Acompañantes a elegir: maduro, yuca frita, yuca, queso frito, papas fritas, pico de gallo, arepitas fritas con nata, tostones o aguacate.", "incluye": "Incluye 2 acompañantes.", "disponible": true, "destacado": false}]}, {"id": 6, "nombre": "Patacones", "con_foto": false, "nota": "", "visible": true, "platos": [{"id": 13, "categoria_id": 6, "nombre": "Reina en Proceso", "precio": 14.99, "descripcion": "Carne desmechada o pollo desmechado. Repollo, zanahoria, queso amarillo, aguacate, huevo y salsas.", "incluye": "", "disponible": true, "destacado": false}, {"id": 14, "categoria_id": 6, "nombre": "La Inalcanzable 91", "precio": 18.99, "descripcion": "Mixto. Ensalada de zanahoria, maíz, jamón, queso de mano, tomate, lechuga y aguacate.", "incluye": "", "disponible": true, "destacado": false}]}, {"id": 7, "nombre": "Parrilla", "con_foto": false, "nota": "", "visible": true, "platos": [{"id": 15, "categoria_id": 7, "nombre": "Provenza 291 House", "precio": 26.99, "descripcion": "Queso frito, queso de mano, chorizo, chicharrón, yuca frita, arepitas fritas, ⅔ lb de pollo, ⅔ lb de picanha, costilla frita, nata y pico de gallo.", "incluye": "", "disponible": true, "destacado": false}]}, {"id": 8, "nombre": "S91 The House Empanadas", "con_foto": false, "nota": "", "visible": true, "platos": [{"id": 16, "categoria_id": 8, "nombre": "Pollo desmechado", "precio": 4.99, "descripcion": "", "incluye": "", "disponible": true, "destacado": false}, {"id": 17, "categoria_id": 8, "nombre": "Jamón, maíz, queso y tocineta", "precio": 4.99, "descripcion": "", "incluye": "", "disponible": true, "destacado": false}, {"id": 18, "categoria_id": 8, "nombre": "Carne desmechada", "precio": 4.99, "descripcion": "", "incluye": "", "disponible": true, "destacado": false}, {"id": 19, "categoria_id": 8, "nombre": "Cazón", "precio": 4.99, "descripcion": "", "incluye": "", "disponible": true, "destacado": false}, {"id": 20, "categoria_id": 8, "nombre": "Pabellón", "precio": 4.99, "descripcion": "", "incluye": "", "disponible": true, "destacado": false}]}, {"id": 9, "nombre": "Salchipapas", "con_foto": false, "nota": "", "visible": true, "platos": [{"id": 21, "categoria_id": 9, "nombre": "Esencial", "precio": 5.99, "descripcion": "Papas fritas, salchichas, queso rallado y salsas.", "incluye": "", "disponible": true, "destacado": false}, {"id": 22, "categoria_id": 9, "nombre": "S91 Dorada House Grill", "precio": 18.99, "descripcion": "Papas fritas, salchichas, queso, maíz, tocineta, jamón, huevo, pollo y carne. Salsa Golden House.", "incluye": "", "disponible": true, "destacado": false}]}, {"id": 10, "nombre": "Appetizers", "con_foto": false, "nota": "", "visible": true, "platos": [{"id": 23, "categoria_id": 10, "nombre": "Arepitas con nata", "precio": 8.99, "descripcion": "6 piezas.", "incluye": "", "disponible": true, "destacado": false}, {"id": 24, "categoria_id": 10, "nombre": "Tostones", "precio": 8.99, "descripcion": "4 piezas. Con ensalada de repollo, cilantro y zanahoria.", "incluye": "", "disponible": true, "destacado": false}, {"id": 25, "categoria_id": 10, "nombre": "Tequeños con salsa", "precio": 11.99, "descripcion": "6 piezas.", "incluye": "", "disponible": true, "destacado": false}, {"id": 26, "categoria_id": 10, "nombre": "Yuca frita con ensalada", "precio": 8.99, "descripcion": "", "incluye": "", "disponible": true, "destacado": false}, {"id": 27, "categoria_id": 10, "nombre": "Chicharrón frito", "precio": 6.99, "descripcion": "", "incluye": "", "disponible": true, "destacado": false}, {"id": 28, "categoria_id": 10, "nombre": "Papas fritas", "precio": 6.99, "descripcion": "Con queso rallado, tocineta y maíz.", "incluye": "", "disponible": true, "destacado": false}]}, {"id": 11, "nombre": "Mi Capricho S91", "con_foto": false, "nota": "", "visible": true, "platos": [{"id": 29, "categoria_id": 11, "nombre": "Torta 3 leches", "precio": 10.1, "descripcion": "", "incluye": "", "disponible": true, "destacado": false}, {"id": 30, "categoria_id": 11, "nombre": "Brilla Flan S91", "precio": 8.6, "descripcion": "Flan clásico con caramelo dorado.", "incluye": "", "disponible": true, "destacado": false}, {"id": 31, "categoria_id": 11, "nombre": "Torta fría", "precio": 8.2, "descripcion": "", "incluye": "", "disponible": true, "destacado": false}]}, {"id": 12, "nombre": "Extras", "con_foto": false, "nota": "Cada extra $2.99", "visible": true, "platos": [{"id": 32, "categoria_id": 12, "nombre": "Extra", "precio": 2.99, "descripcion": "Agrega tocineta, queso, huevo, maíz, aguacate u otro ingrediente a tu plato.", "incluye": "", "disponible": true, "destacado": false}]}, {"id": 13, "nombre": "Menú para Niños", "con_foto": false, "nota": "", "visible": true, "platos": [{"id": 33, "categoria_id": 13, "nombre": "Mini S91 Box", "precio": 6.99, "descripcion": "Papas fritas y nuggets de pollo.", "incluye": "", "disponible": true, "destacado": false}]}, {"id": 14, "nombre": "Bebidas", "con_foto": true, "nota": "", "visible": true, "platos": [{"id": 34, "categoria_id": 14, "nombre": "Jugo de fresa", "precio": 5.99, "descripcion": "Natural, hecho al momento.", "incluye": "", "disponible": true, "destacado": false}, {"id": 35, "categoria_id": 14, "nombre": "Jugo de mora", "precio": 5.99, "descripcion": "Natural, hecho al momento.", "incluye": "", "disponible": true, "destacado": false}, {"id": 36, "categoria_id": 14, "nombre": "Jugo de piña", "precio": 5.99, "descripcion": "Natural, hecho al momento.", "incluye": "", "disponible": true, "destacado": false}, {"id": 37, "categoria_id": 14, "nombre": "Nestea de limón", "precio": 4.2, "descripcion": "Té frío.", "incluye": "", "disponible": true, "destacado": false}, {"id": 38, "categoria_id": 14, "nombre": "Nestea de durazno", "precio": 4.2, "descripcion": "Té frío.", "incluye": "", "disponible": true, "destacado": false}, {"id": 39, "categoria_id": 14, "nombre": "Coca-Cola", "precio": 2.9, "descripcion": "Lata 12 oz.", "incluye": "", "disponible": true, "destacado": false}, {"id": 40, "categoria_id": 14, "nombre": "Freskolita", "precio": 2.99, "descripcion": "Lata 12 oz.", "incluye": "", "disponible": true, "destacado": false}, {"id": 41, "categoria_id": 14, "nombre": "Malta", "precio": 2.99, "descripcion": "Lata 12 oz, sin alcohol.", "incluye": "", "disponible": true, "destacado": false}, {"id": 42, "categoria_id": 14, "nombre": "Postobón manzana", "precio": 2.5, "descripcion": "Lata 12 oz.", "incluye": "", "disponible": true, "destacado": false}, {"id": 43, "categoria_id": 14, "nombre": "Agua Saratoga", "precio": 2.8, "descripcion": "Agua de manantial, 12 oz.", "incluye": "", "disponible": true, "destacado": false}]}];
 </script>
 </body>
 </html>
