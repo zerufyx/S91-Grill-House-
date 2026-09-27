@@ -550,12 +550,12 @@ svg{display:block}
    ===================================================================== */
 const CONFIG = {
   whatsapp: "",                 // ej. "14075551234" (código de país + número, sin + ni espacios)
-  address: "704 S. Dillard St., Winter Garden, FL 34787",
+  address: "9622 1st Ave, Orlando, FL 32824",
   /* Enlace de ruta. Va con la dirección, NO con el nombre del negocio:
      mientras S91 no esté registrado en Google Maps, buscar por nombre no
      devuelve nada. Así abre la ruta directa desde donde esté la persona. */
   mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=" +
-           encodeURIComponent("704 S Dillard St, Winter Garden, FL 34787"),
+           encodeURIComponent("9622 1st Ave, Orlando, FL 32824"),
   instagram: "s91housegrill",
   favorites: ["S91 Imperial House", "Criolla Grill", "Legendario"],
 
@@ -930,7 +930,17 @@ const NUBE = {
   anonKey: "sb_publishable_k4jAuf7UCzpT_kp2jSpW-A_1ICXHA2s",
   storeId: 4,
 };
-const CACHE = "s91-menu-v1";
+const CACHE = "s91-menu-v2";
+try{ localStorage.removeItem("s91-menu-v1"); }catch(e){}
+
+/* Fotos incrustadas, indexadas por nombre de plato.
+   Sirven de respaldo cuando el plato de la base todavía no tiene foto propia:
+   así el menú nunca pierde las imágenes que ya existían. */
+const FOTOS_LOCALES = (() => {
+  const m = {};
+  MENU.forEach(c => c.items.forEach(it => { if(it.img) m[it.name.toLowerCase().trim()] = it.img; }));
+  return m;
+})();
 
 function aMenu(cats, platos){
   const slug = (t, i) => (t || "cat").toLowerCase()
@@ -949,7 +959,7 @@ function aMenu(cats, platos){
         desc: p.descripcion || "",
         incl: p.incluye || "",
         tag:  p.etiqueta || "",
-        img:  p.foto_url || null,
+        img:  p.foto_url || FOTOS_LOCALES[p.nombre.toLowerCase().trim()] || null,
         destacado: !!p.destacado,
       })),
   })).filter(c => c.items.length);
@@ -993,6 +1003,9 @@ let inicial = MENU, favsIniciales = CONFIG.favorites;
 try{
   const guardado = JSON.parse(localStorage.getItem(CACHE) || "null");
   if(guardado && guardado.menu && guardado.menu.length){
+    guardado.menu.forEach(c => c.items.forEach(it => {
+      if(!it.img) it.img = FOTOS_LOCALES[(it.name || "").toLowerCase().trim()] || null;
+    }));
     inicial = guardado.menu; favsIniciales = null;
   }
 }catch(e){}
