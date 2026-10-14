@@ -6,7 +6,9 @@ Menú digital del food truck S91 House Grill. **Cliente**. **En línea: https://
 |---|---|
 | `index.html` | El menú que ve el cliente (QR o link), con fotos, precios y pedido por WhatsApp |
 | `admin.html` | Panel para cambiar platos, precios, fotos, agotados y orden del menú |
-| `CNAME` | Dominio s91housegrill.com |
+| `CNAME` | Dominio s91housegrill.com para GitHub Pages. Se quita al apagar GitHub Pages (Fase 3 de la mudanza) |
+
+**Hosting:** Cloudflare Pages, proyecto `s91-house-grill` (también en https://s91-house-grill.pages.dev). El dominio está en Namecheap con los nameservers de Cloudflare. Cada cambio en `main` se publica solo.
 
 **Supabase:** sistema de Menús, `store_id = 4` (tablas `tiendas`, `categorias`, `platos`, `ajustes`, `tienda_admins`). Fotos en el bucket `menu`. Solo se usa la llave pública.
 
